@@ -1,0 +1,39 @@
+{% extends "blog/base.html" %} {% load static %} {% block content %}
+
+<style>
+    .form-control {
+        background-color: rgb(177, 168, 168);
+    }
+</style>
+
+<div class="col-sm-10">
+    <h3 class="text-dark my-5">Contact Page</h3>
+    <h4>If anyone want to contact with you, give us your contact information.</h4>
+    <form>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="inputname">Name*</label>
+                <input type="text" class="form-control" id="inputname">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="inputemail">Email*</label>
+                <input type="email" class="form-control" id="inputemail">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputAddress">Address</label>
+            <input type="text" class="form-control" id="inputAddress">
+        </div>
+        <div class="form-group">
+            <label for="massege">Massege*</label>
+            <textarea class="form-control" id="massege" rows="3"></textarea>
+        </div>
+
+        <a class="btn btn-primary" href="{% url 'dashboard' %}">Send </a>
+    </form>
+    <br><br><br><br>
+    <p></p>
+</div>
+
+
+{% endblock content %}
