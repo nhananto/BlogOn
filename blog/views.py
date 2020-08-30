@@ -4,16 +4,15 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from .models import Post
 from django.contrib.auth.models import Group
+from django.contrib.auth.models import User
 
 #Home
 
 
 def home(request):
-    # writter = Post.objects.filter(author_id=request.user.id)
     posts = Post.objects.all()
     return render(request, 'blog/home.html', {'posts': posts})
 #About
-
 
 def about(request):
     return render(request, 'blog/about.html')
@@ -85,7 +84,8 @@ def add_post(request):
             if form.is_valid():
                 title = form.cleaned_data['title']
                 desc = form.cleaned_data['desc']
-                pst = Post(title=title, desc=desc, author_id=request.user.id)
+                quote = form.cleaned_data['quote']
+                pst = Post(title=title, desc=desc, quote=quote, author_id=request.user.id)
                 messages.success(request, 'Blog Posted...')
                 pst.save()
                 form = PostForm()
